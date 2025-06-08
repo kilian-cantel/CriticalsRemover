@@ -1,0 +1,8 @@
+name: CriticalsRemover
+version: '1.0'
+main: com.atzer.criticalsRemover.CriticalsRemover
+api-version: '1.21'
+prefix: CriticalsRemover
+load: STARTUP
+authors: [ Atzer722 ]
+description: Remove criticals from Minecraft
