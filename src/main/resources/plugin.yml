@@ -1,5 +1,5 @@
 name: CriticalsRemover
-version: '1.3'
+version: '1.4'
 main: com.atzer.criticalsRemover.CriticalsRemover
 api-version: '1.21'
 prefix: CriticalsRemover
