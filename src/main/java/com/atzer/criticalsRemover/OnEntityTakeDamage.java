@@ -20,7 +20,6 @@ public class OnEntityTakeDamage implements Listener {
         boolean flag = player.getFallDistance() > 0.0F && !player.isOnGround() && !player.hasPotionEffect(PotionEffectType.BLINDNESS) && player.getVehicle() == null;
 
         if (flag) {
-            event.setCancelled(true);
             Objects.requireNonNull(event.getEntity().getLastDamageCause()).setDamage(event.getDamage() / 1.5F);
         }
         return true;
