@@ -6,3 +6,9 @@ prefix: CriticalsRemover
 load: STARTUP
 authors: [ Atzer722 ]
 description: Remove criticals from Minecraft
+
+commands:
+  criticalsremover:
+    description: Allow/Disable Criticals in Minectraft.
+    aliases:
+      - cr
