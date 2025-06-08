@@ -4,11 +4,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
-
 
 public class OnEntityTakeDamage implements Listener {
 
@@ -20,7 +18,10 @@ public class OnEntityTakeDamage implements Listener {
         boolean flag = player.getFallDistance() > 0.0F && !player.isOnGround() && !player.hasPotionEffect(PotionEffectType.BLINDNESS) && player.getVehicle() == null;
 
         if (flag) {
-            Objects.requireNonNull(event.getEntity().getLastDamageCause()).setDamage(event.getDamage() / 1.5F);
+            EntityDamageEvent cause = event.getEntity().getLastDamageCause();
+            if (cause == null) return false;
+
+            event.getEntity().getLastDamageCause().setDamage(event.getDamage() / 1.5F);
         }
         return true;
     }
