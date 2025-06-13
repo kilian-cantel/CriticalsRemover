@@ -10,14 +10,24 @@ import org.jetbrains.annotations.NotNull;
 public class CriticalsRemoverCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
-
         if (!commandSender.hasPermission("criticalsremover.admin")) {
             commandSender.sendMessage(Component.text("Vous n'avez pas la permission !").color(NamedTextColor.RED));
             return false;
         }
 
-        CriticalsRemover.setActive(!CriticalsRemover.isActive());
-        commandSender.sendMessage(Component.text("Le plugin " + (CriticalsRemover.isActive() ? "est" : "n'est pas") + " actif !").color(NamedTextColor.GREEN));
-        return true;
+        if (strings.length != 1) {
+            commandSender.sendMessage(Component.text("Usage: /criticalsremover <amount>").color(NamedTextColor.RED));
+            return false;
+        }
+
+        try {
+            double multi = Double.parseDouble(strings[0]);
+            CriticalsRemover.getInstance().setMulti(multi);
+            commandSender.sendMessage(Component.text("Le multi est maintenant: " + multi).color(NamedTextColor.GREEN));
+            return true;
+        } catch (NumberFormatException e) {
+            commandSender.sendMessage(Component.text("L'argument fourni est incorrect !").color(NamedTextColor.RED));
+            return false;
+        }
     }
 }

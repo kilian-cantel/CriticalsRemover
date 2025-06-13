@@ -1,1 +1,2 @@
-active: true #Vous pouvez changer cette valeur avec la commande /cr
+criticals_multiplier: 1.0 #Criticals multiplier - 1.0 = No critical hit, 1.5 = basic critical hit.
+debug: false #Says damages when you hit.
